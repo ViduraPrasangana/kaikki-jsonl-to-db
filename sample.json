@@ -1,0 +1,2593 @@
+{
+  "pos": "noun",
+  "head_templates": [
+    {
+      "name": "en-noun",
+      "expansion": "bus (plural buses or busses)"
+    }
+  ],
+  "forms": [
+    {
+      "form": "buses",
+      "tags": [
+        "plural"
+      ]
+    },
+    {
+      "form": "busses",
+      "tags": [
+        "plural"
+      ]
+    }
+  ],
+  "descendants": [
+    {
+      "depth": 1,
+      "templates": [
+        {
+          "name": "desc",
+          "args": {
+            "1": "ar",
+            "2": "بَاص",
+            "bor": "1"
+          },
+          "expansion": "→ Arabic: بَاص (bāṣ)"
+        }
+      ],
+      "text": "→ Arabic: بَاص (bāṣ)"
+    },
+    {
+      "depth": 1,
+      "templates": [
+        {
+          "name": "desc",
+          "args": {
+            "1": "my",
+            "2": "ဘတ်စ်ကား",
+            "der": "1"
+          },
+          "expansion": "⇒ Burmese: ဘတ်စ်ကား (bhatcka:)"
+        }
+      ],
+      "text": "⇒ Burmese: ဘတ်စ်ကား (bhatcka:)"
+    },
+    {
+      "depth": 1,
+      "templates": [
+        {
+          "name": "desc",
+          "args": {
+            "1": "yue",
+            "2": "巴士",
+            "bor": "1"
+          },
+          "expansion": "→ Cantonese: 巴士"
+        }
+      ],
+      "text": "→ Cantonese: 巴士"
+    },
+    {
+      "depth": 2,
+      "templates": [
+        {
+          "name": "desc",
+          "args": {
+            "1": "cmn",
+            "2": "巴士",
+            "obor": "1"
+          },
+          "expansion": "→ Mandarin: 巴士 (bāshì)"
+        }
+      ],
+      "text": "→ Mandarin: 巴士 (bāshì)"
+    },
+    {
+      "depth": 1,
+      "templates": [
+        {
+          "name": "desc",
+          "args": {
+            "1": "de",
+            "2": "Bus",
+            "g": "m",
+            "bor": "1"
+          },
+          "expansion": "→ German: Bus m"
+        }
+      ],
+      "text": "→ German: Bus m"
+    },
+    {
+      "depth": 1,
+      "templates": [
+        {
+          "name": "desc",
+          "args": {
+            "1": "hi",
+            "2": "बस",
+            "bor": "1"
+          },
+          "expansion": "→ Hindi: बस (bas)"
+        }
+      ],
+      "text": "→ Hindi: बस (bas)"
+    },
+    {
+      "depth": 1,
+      "templates": [
+        {
+          "name": "desc",
+          "args": {
+            "1": "ga",
+            "2": "bus",
+            "bor": "1"
+          },
+          "expansion": "→ Irish: bus"
+        }
+      ],
+      "text": "→ Irish: bus"
+    }
+  ],
+  "sounds": [
+    {
+      "ipa": "/bʌs/"
+    },
+    {
+      "ipa": "/bʊs/",
+      "tags": [
+        "Ireland",
+        "Northern-England"
+      ]
+    },
+    {
+      "ipa": "/bɐs/",
+      "tags": [
+        "General-Australian",
+        "Mid-Atlantic",
+        "New-Zealand",
+        "Scotland"
+      ]
+    },
+    {
+      "ipa": "/bɔs/",
+      "note": "Northern Cities Vowel Shift, Ireland"
+    },
+    {
+      "ipa": "/bʊz/",
+      "note": "Birmingham, Black Country"
+    },
+    {
+      "homophone": "Buss"
+    },
+    {
+      "homophone": "buss"
+    },
+    {
+      "rhymes": "-ʌs"
+    },
+    {
+      "audio": "en-Buss.ogg",
+      "ogg_url": "https://upload.wikimedia.org/wikipedia/commons/8/87/En-Buss.ogg",
+      "mp3_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/8/87/En-Buss.ogg/En-Buss.ogg.mp3"
+    },
+    {
+      "audio": "en-us-bus.ogg",
+      "ogg_url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/En-us-bus.ogg",
+      "mp3_url": "https://upload.wikimedia.org/wikipedia/commons/transcoded/5/5e/En-us-bus.ogg/En-us-bus.ogg.mp3"
+    },
+    {
+      "enpr": "bŭs"
+    }
+  ],
+  "etymology_text": "Clipping of omnibus. Formerly often spelt 'bus. The electrical sense is derived from figurative application of the automotive sense.",
+  "etymology_templates": [
+    {
+      "name": "clipping",
+      "args": {
+        "1": "en",
+        "2": "omnibus"
+      },
+      "expansion": "Clipping of omnibus"
+    }
+  ],
+  "word": "bus",
+  "lang": "English",
+  "lang_code": "en",
+  "hyponyms": [
+    {
+      "word": "booze bus",
+      "_dis1": "0 0 0 0 0 0"
+    },
+    {
+      "word": "computer bus",
+      "_dis1": "0 0 0 0 0 0"
+    },
+    {
+      "word": "short bus",
+      "_dis1": "0 0 0 0 0 0"
+    }
+  ],
+  "derived": [
+    {
+      "word": "address bus"
+    },
+    {
+      "word": "Airbus"
+    },
+    {
+      "word": "airbus"
+    }
+  ],
+  "senses": [
+    {
+      "links": [
+        [
+          "automotive",
+          "automotive"
+        ],
+        [
+          "motor",
+          "motor"
+        ],
+        [
+          "vehicle",
+          "vehicle"
+        ]
+      ],
+      "raw_glosses": [
+        "(automotive) A motor vehicle for transporting large numbers of people along roads; by extension, the driver of said vehicle"
+      ],
+      "topics": [
+        "automotive",
+        "transport",
+        "vehicles"
+      ],
+      "glosses": [
+        "A motor vehicle for transporting large numbers of people along roads; by extension, the driver of said vehicle"
+      ],
+      "id": "en-bus-en-noun--zqW~zvN",
+      "categories": [
+        {
+          "name": "Automotive",
+          "kind": "topical",
+          "parents": [
+            "Transport",
+            "All topics",
+            "Fundamental"
+          ],
+          "source": "w",
+          "orig": "en:Automotive",
+          "langcode": "en"
+        },
+        {
+          "name": "Terms with Abkhaz translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Adyghe translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Afrikaans translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Albanian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Amharic translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Arabic translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 14 28 5 5 32"
+        },
+        {
+          "name": "Terms with Armenian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 28 5 5 29"
+        },
+        {
+          "name": "Terms with Assamese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Asturian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 6 6 28"
+        },
+        {
+          "name": "Terms with Azerbaijani translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Bashkir translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Belarusian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 28 6 6 29"
+        },
+        {
+          "name": "Terms with Bengali translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 29 5 5 30"
+        },
+        {
+          "name": "Terms with Breton translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Bulgarian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Buryat translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Cantonese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "14 13 28 6 6 33"
+        },
+        {
+          "name": "Terms with Carpathian Rusyn translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Catalan translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 11 26 5 6 29"
+        },
+        {
+          "name": "Terms with Central Dusun translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "15 12 28 5 6 33"
+        },
+        {
+          "name": "Terms with Chechen translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Chuvash translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Crimean Tatar translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 24 7 7 29"
+        },
+        {
+          "name": "Terms with Czech translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 13 26 4 8 30"
+        },
+        {
+          "name": "Terms with Eastern Mari translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "17 11 31 2 3 36"
+        },
+        {
+          "name": "Terms with Eastern Min translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 14 30 2 3 34"
+        },
+        {
+          "name": "Terms with Egyptian Arabic translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 13 28 5 5 30"
+        },
+        {
+          "name": "Terms with Estonian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Ewe translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Farefare translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "15 12 29 5 5 34"
+        },
+        {
+          "name": "Terms with Faroese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with French translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 15 27 8 8 29"
+        },
+        {
+          "name": "Terms with Fula translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Georgian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 11 32 5 5 28"
+        },
+        {
+          "name": "Terms with German translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 16 28 6 7 30"
+        },
+        {
+          "name": "Terms with Greenlandic translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "17 13 27 5 6 32"
+        },
+        {
+          "name": "Terms with Gujarati translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 28 5 5 29"
+        },
+        {
+          "name": "Terms with Hakka translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Hausa translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Hebrew translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 15 31 5 5 30"
+        },
+        {
+          "name": "Terms with Hokkien translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "17 13 27 5 6 32"
+        },
+        {
+          "name": "Terms with Icelandic translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Ido translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 29 5 6 34"
+        },
+        {
+          "name": "Terms with Indonesian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Ingush translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Interlingua translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "15 12 28 5 6 34"
+        },
+        {
+          "name": "Terms with Italian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Japanese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Kabardian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 13 27 6 6 32"
+        },
+        {
+          "name": "Terms with Kannada translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "15 12 29 6 6 32"
+        },
+        {
+          "name": "Terms with Karelian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Kashubian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Kazakh translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Khakas translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "14 13 28 6 6 32"
+        },
+        {
+          "name": "Terms with Khmer translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 28 5 6 29"
+        },
+        {
+          "name": "Terms with Kikuyu translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Korean translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Kyrgyz translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Latin translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Latvian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Lithuanian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Livonian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Luo translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 5 5 31"
+        },
+        {
+          "name": "Terms with Luxembourgish translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 13 28 5 6 32"
+        },
+        {
+          "name": "Terms with Lü translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Macanese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 13 27 6 6 32"
+        },
+        {
+          "name": "Terms with Macedonian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Malay translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Malayalam translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Maltese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 6 6 28"
+        },
+        {
+          "name": "Terms with Maori translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Marathi translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "17 13 27 6 6 31"
+        },
+        {
+          "name": "Terms with Mongolian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "23 11 26 4 6 31"
+        },
+        {
+          "name": "Terms with Moore translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 13 27 6 7 32"
+        },
+        {
+          "name": "Terms with Moroccan Arabic translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "17 12 31 2 3 36"
+        },
+        {
+          "name": "Terms with Mòcheno translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 7 7 33"
+        },
+        {
+          "name": "Terms with Norwegian Bokmål translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 6 6 30"
+        },
+        {
+          "name": "Terms with Oromo translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Ossetian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Paiwan translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Pashto translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Persian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 5 6 31"
+        },
+        {
+          "name": "Terms with Polish translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "18 14 26 7 7 28"
+        },
+        {
+          "name": "Terms with Portuguese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Punjabi translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Romanian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Russian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "12 16 27 6 7 32"
+        },
+        {
+          "name": "Terms with Sanskrit translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "14 13 28 6 6 33"
+        },
+        {
+          "name": "Terms with Serbo-Croatian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 14 26 5 6 29"
+        },
+        {
+          "name": "Terms with Sinhalese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "15 12 30 5 6 31"
+        },
+        {
+          "name": "Terms with Skolt Sami translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "23 12 26 4 5 30"
+        },
+        {
+          "name": "Terms with Slovak translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Slovene translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Sotho translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 13 27 7 7 31"
+        },
+        {
+          "name": "Terms with Tagalog translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Tajik translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Tamil translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 29 5 6 29"
+        },
+        {
+          "name": "Terms with Tatar translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "23 11 26 5 6 29"
+        },
+        {
+          "name": "Terms with Telugu translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 11 28 5 6 30"
+        },
+        {
+          "name": "Terms with Thai translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 29 5 6 29"
+        },
+        {
+          "name": "Terms with Tibetan translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 27 5 5 31"
+        },
+        {
+          "name": "Terms with Tigrinya translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Tswana translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Turkish translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 5 30"
+        },
+        {
+          "name": "Terms with Turkmen translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Tuvan translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Udmurt translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Ukrainian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Urdu translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 13 28 5 6 32"
+        },
+        {
+          "name": "Terms with Uyghur translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Uzbek translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Vietnamese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Volapük translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 7 7 33"
+        },
+        {
+          "name": "Terms with Welsh translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "12 13 28 8 9 30"
+        },
+        {
+          "name": "Terms with Western Mari translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "17 11 31 2 3 35"
+        },
+        {
+          "name": "Terms with Wolof translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Wu translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Yakut translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Yiddish translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "15 14 29 5 6 32"
+        },
+        {
+          "name": "Terms with Zulu translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 27 6 6 30"
+        },
+        {
+          "name": "Vehicles",
+          "kind": "topical",
+          "parents": [
+            "Machines",
+            "Transport",
+            "Technology",
+            "All topics",
+            "Fundamental"
+          ],
+          "source": "w+disamb",
+          "orig": "en:Vehicles",
+          "langcode": "en",
+          "_dis": "14 2 4 11 4 4 20 19 16 2 4"
+        }
+      ],
+      "translations": [
+        {
+          "lang": "Abkhaz",
+          "code": "ab",
+          "sense": "vehicle",
+          "roman": "avtʼobus",
+          "word": "автобус",
+          "_dis1": "61 0 0 0 39 0"
+        },
+        {
+          "lang": "Adyghe",
+          "code": "ady",
+          "sense": "vehicle",
+          "roman": "avtobus",
+          "word": "автобус",
+          "_dis1": "61 0 0 0 39 0"
+        }
+      ],
+      "synonyms": [
+        {
+          "sense": "vehicle",
+          "word": "autobus",
+          "_dis1": "61 0 0 0 39 0"
+        },
+        {
+          "sense": "vehicle",
+          "word": "coach",
+          "_dis1": "61 0 0 0 39 0"
+        },
+        {
+          "sense": "vehicle",
+          "word": "loser cruiser",
+          "_dis1": "61 0 0 0 39 0"
+        },
+        {
+          "sense": "vehicle",
+          "word": "motorbus",
+          "_dis1": "61 0 0 0 39 0"
+        },
+        {
+          "sense": "vehicle",
+          "word": "multibus",
+          "_dis1": "61 0 0 0 39 0"
+        },
+        {
+          "sense": "vehicle",
+          "word": "omnibus",
+          "_dis1": "61 0 0 0 39 0"
+        },
+        {
+          "tags": [
+            "obsolete"
+          ],
+          "sense": "vehicle",
+          "word": "Shillibeer",
+          "_dis1": "61 0 0 0 39 0"
+        }
+      ]
+    },
+    {
+      "links": [
+        [
+          "electrical",
+          "electrical"
+        ],
+        [
+          "conductor",
+          "conductor"
+        ],
+        [
+          "interface",
+          "interface"
+        ],
+        [
+          "common",
+          "common"
+        ],
+        [
+          "connection",
+          "connection"
+        ],
+        [
+          "circuit",
+          "circuit"
+        ],
+        [
+          "component",
+          "component"
+        ]
+      ],
+      "glosses": [
+        "An electrical conductor or interface serving as a common connection for two or more circuits or components."
+      ],
+      "id": "en-bus-en-noun-BDcxRcOR",
+      "translations": [
+        {
+          "lang": "Arabic",
+          "code": "ar",
+          "sense": "electrical conductor",
+          "roman": "nāqil",
+          "tags": [
+            "masculine"
+          ],
+          "word": "نَاقِل",
+          "_dis1": "3 83 4 1 4 5"
+        },
+        {
+          "lang": "Armenian",
+          "code": "hy",
+          "sense": "electrical conductor",
+          "roman": "doġ",
+          "word": "դող",
+          "_dis1": "3 83 4 1 4 5"
+        },
+        {
+          "lang": "Azerbaijani",
+          "code": "az",
+          "sense": "electrical conductor",
+          "word": "şin",
+          "_dis1": "3 83 4 1 4 5"
+        },
+        {
+          "lang": "Belarusian",
+          "code": "be",
+          "sense": "electrical conductor",
+          "roman": "šýna",
+          "tags": [
+            "feminine"
+          ],
+          "word": "шы́на",
+          "_dis1": "3 83 4 1 4 5"
+        }
+      ],
+      "synonyms": [
+        {
+          "sense": "electrical conductor",
+          "word": "electrical bus",
+          "_dis1": "3 83 4 1 4 5"
+        },
+        {
+          "sense": "electrical conductor",
+          "word": "busbar",
+          "_dis1": "3 83 4 1 4 5"
+        },
+        {
+          "sense": "electrical conductor",
+          "word": "digit trunk",
+          "_dis1": "3 83 4 1 4 5"
+        }
+      ],
+      "categories": [
+        {
+          "name": "Terms with Abkhaz translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Adyghe translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Afrikaans translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Albanian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Amharic translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Arabic translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 14 28 5 5 32"
+        },
+        {
+          "name": "Terms with Armenian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 28 5 5 29"
+        },
+        {
+          "name": "Terms with Assamese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Asturian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 6 6 28"
+        },
+        {
+          "name": "Terms with Azerbaijani translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Bashkir translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Belarusian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 28 6 6 29"
+        },
+        {
+          "name": "Terms with Bengali translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 29 5 5 30"
+        },
+        {
+          "name": "Terms with Breton translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Bulgarian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Buryat translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Cantonese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "14 13 28 6 6 33"
+        },
+        {
+          "name": "Terms with Carpathian Rusyn translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Catalan translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 11 26 5 6 29"
+        },
+        {
+          "name": "Terms with Central Dusun translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "15 12 28 5 6 33"
+        },
+        {
+          "name": "Terms with Chechen translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Chuvash translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Crimean Tatar translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 24 7 7 29"
+        },
+        {
+          "name": "Terms with Czech translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 13 26 4 8 30"
+        },
+        {
+          "name": "Terms with Eastern Mari translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "17 11 31 2 3 36"
+        },
+        {
+          "name": "Terms with Eastern Min translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 14 30 2 3 34"
+        },
+        {
+          "name": "Terms with Egyptian Arabic translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 13 28 5 5 30"
+        },
+        {
+          "name": "Terms with Estonian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Ewe translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Farefare translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "15 12 29 5 5 34"
+        },
+        {
+          "name": "Terms with Faroese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with French translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 15 27 8 8 29"
+        },
+        {
+          "name": "Terms with Fula translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Georgian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 11 32 5 5 28"
+        },
+        {
+          "name": "Terms with German translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 16 28 6 7 30"
+        },
+        {
+          "name": "Terms with Greenlandic translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "17 13 27 5 6 32"
+        },
+        {
+          "name": "Terms with Gujarati translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 28 5 5 29"
+        },
+        {
+          "name": "Terms with Hakka translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Hausa translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Hebrew translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 15 31 5 5 30"
+        },
+        {
+          "name": "Terms with Hokkien translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "17 13 27 5 6 32"
+        },
+        {
+          "name": "Terms with Icelandic translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Ido translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 29 5 6 34"
+        },
+        {
+          "name": "Terms with Indonesian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Ingush translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Interlingua translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "15 12 28 5 6 34"
+        },
+        {
+          "name": "Terms with Italian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Japanese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Kabardian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 13 27 6 6 32"
+        },
+        {
+          "name": "Terms with Kannada translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "15 12 29 6 6 32"
+        },
+        {
+          "name": "Terms with Karelian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Kashubian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Kazakh translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Khakas translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "14 13 28 6 6 32"
+        },
+        {
+          "name": "Terms with Khmer translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 28 5 6 29"
+        },
+        {
+          "name": "Terms with Kikuyu translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Korean translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Kyrgyz translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Latin translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Latvian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Lithuanian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Livonian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Luo translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 5 5 31"
+        },
+        {
+          "name": "Terms with Luxembourgish translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 13 28 5 6 32"
+        },
+        {
+          "name": "Terms with Lü translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Macanese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 13 27 6 6 32"
+        },
+        {
+          "name": "Terms with Macedonian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Malay translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Malayalam translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Maltese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 6 6 28"
+        },
+        {
+          "name": "Terms with Maori translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Marathi translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "17 13 27 6 6 31"
+        },
+        {
+          "name": "Terms with Mongolian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "23 11 26 4 6 31"
+        },
+        {
+          "name": "Terms with Moore translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 13 27 6 7 32"
+        },
+        {
+          "name": "Terms with Moroccan Arabic translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "17 12 31 2 3 36"
+        },
+        {
+          "name": "Terms with Mòcheno translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 7 7 33"
+        },
+        {
+          "name": "Terms with Norwegian Bokmål translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 6 6 30"
+        },
+        {
+          "name": "Terms with Oromo translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Ossetian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Paiwan translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Pashto translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Persian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 5 6 31"
+        },
+        {
+          "name": "Terms with Polish translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "18 14 26 7 7 28"
+        },
+        {
+          "name": "Terms with Portuguese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Punjabi translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Romanian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Russian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "12 16 27 6 7 32"
+        },
+        {
+          "name": "Terms with Sanskrit translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "14 13 28 6 6 33"
+        },
+        {
+          "name": "Terms with Serbo-Croatian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 14 26 5 6 29"
+        },
+        {
+          "name": "Terms with Sinhalese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "15 12 30 5 6 31"
+        },
+        {
+          "name": "Terms with Skolt Sami translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "23 12 26 4 5 30"
+        },
+        {
+          "name": "Terms with Slovak translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Slovene translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Sotho translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 13 27 7 7 31"
+        },
+        {
+          "name": "Terms with Tagalog translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Tajik translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Tamil translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 29 5 6 29"
+        },
+        {
+          "name": "Terms with Tatar translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "23 11 26 5 6 29"
+        },
+        {
+          "name": "Terms with Telugu translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 11 28 5 6 30"
+        },
+        {
+          "name": "Terms with Thai translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 29 5 6 29"
+        },
+        {
+          "name": "Terms with Tibetan translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "19 12 27 5 5 31"
+        },
+        {
+          "name": "Terms with Tigrinya translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Tswana translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Turkish translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 5 30"
+        },
+        {
+          "name": "Terms with Turkmen translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "20 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Tuvan translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Udmurt translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Ukrainian translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Urdu translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "16 13 28 5 6 32"
+        },
+        {
+          "name": "Terms with Uyghur translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Uzbek translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "22 12 27 5 6 29"
+        },
+        {
+          "name": "Terms with Vietnamese translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 12 27 5 6 30"
+        },
+        {
+          "name": "Terms with Volapük translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 7 7 33"
+        },
+        {
+          "name": "Terms with Welsh translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "12 13 28 8 9 30"
+        },
+        {
+          "name": "Terms with Western Mari translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "17 11 31 2 3 35"
+        },
+        {
+          "name": "Terms with Wolof translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Wu translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "13 13 28 6 7 33"
+        },
+        {
+          "name": "Terms with Yakut translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 26 6 6 30"
+        },
+        {
+          "name": "Terms with Yiddish translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "15 14 29 5 6 32"
+        },
+        {
+          "name": "Terms with Zulu translations",
+          "kind": "other",
+          "parents": [
+
+          ],
+          "source": "w+disamb",
+          "_dis": "21 11 27 6 6 30"
+        }
+      ]
+    }
+
+  ]
+}
