@@ -222,6 +222,8 @@ def create_tables(conn):
         c = conn.cursor()
         for query in create_table_queries:
             c.execute(query)
+        c.close()
+        conn.commit()
         print("Tables created successfully.")
     except Error as e:
         print(e)
@@ -230,10 +232,11 @@ def read_last_processed_line(conn):
     cur = conn.cursor()
     cur.execute("SELECT MAX(line_number) FROM Word")
     row = cur.fetchone()
+    cur.close()
     return row[0] if row[0] is not None else 0
 
-def insert_word(conn,data,line_number):
-    cur = conn.cursor()
+def insert_word(cur,data,line_number):
+    
     cur.execute("""
         INSERT OR IGNORE INTO Word (pos, word, lang, lang_code, etymology_text, line_number)
         VALUES (?, ?, ?, ?, ?, ?)
@@ -245,11 +248,11 @@ def insert_word(conn,data,line_number):
         data.get('etymology_text'),
         line_number
     ))
-    conn.commit()
+
     return cur.lastrowid
 
-def insert_head_template(conn,word_id, templates):
-    cur = conn.cursor()
+def insert_head_template(cur,word_id, templates):
+    
     for template in templates:
         cur.execute("""
             INSERT OR IGNORE INTO HeadTemplate (word_id, name, expansion)
@@ -259,30 +262,30 @@ def insert_head_template(conn,word_id, templates):
             template.get('name'),
             template.get('expansion')
         ))
-    conn.commit()
 
-def insert_forms(conn,word_id, forms):
-    cur = conn.cursor()
+
+def insert_forms(cur,word_id, forms):
+    
     for form in forms:
         cur.execute("""
             INSERT OR IGNORE INTO Form (word_id, form)
             VALUES (?, ?)
         """, (word_id, form.get('form')))
         form_id = cur.lastrowid
-        insert_form_tags(conn, form_id, form.get('tags', []))
-    conn.commit()
+        insert_form_tags(cur, form_id, form.get('tags', []))
 
-def insert_form_tags(conn,form_id, tags):
-    cur = conn.cursor()
+
+def insert_form_tags(cur,form_id, tags):
+    
     for tag in tags:
         cur.execute("""
             INSERT OR IGNORE INTO FormTag (form_id, tag)
             VALUES (?, ?)
         """, (form_id, tag))
-    conn.commit()
 
-def insert_descendants(conn,word_id, descendants):
-    cur = conn.cursor()
+
+def insert_descendants(cur,word_id, descendants):
+    
     for descendant in descendants:
         cur.execute("""
             INSERT OR IGNORE INTO Descendant (word_id, depth, text)
@@ -293,11 +296,11 @@ def insert_descendants(conn,word_id, descendants):
             descendant.get('text')
         ))
         descendant_id = cur.lastrowid
-        insert_descendant_templates(conn, descendant_id, descendant.get('templates', []))
-    conn.commit()
+        insert_descendant_templates(cur, descendant_id, descendant.get('templates', []))
 
-def insert_descendant_templates(conn,descendant_id, templates):
-    cur = conn.cursor()
+
+def insert_descendant_templates(cur,descendant_id, templates):
+    
     for template in templates:
         cur.execute("""
             INSERT OR IGNORE INTO DescendantTemplate (descendant_id, name, expansion)
@@ -308,20 +311,20 @@ def insert_descendant_templates(conn,descendant_id, templates):
             template.get('expansion')
         ))
         template_id = cur.lastrowid
-        insert_descendant_template_args(conn, template_id, template.get('args', {}))
-    conn.commit()
+        insert_descendant_template_args(cur, template_id, template.get('args', {}))
 
-def insert_descendant_template_args(conn,template_id, args):
-    cur = conn.cursor()
+
+def insert_descendant_template_args(cur,template_id, args):
+    
     for key, value in args.items():
         cur.execute("""
             INSERT OR IGNORE INTO DescendantTemplateArgs (descendant_template_id, arg_key, arg_value)
             VALUES (?, ?, ?)
         """, (template_id, key, value))
-    conn.commit()
 
-def insert_sounds(conn,word_id, sounds):
-    cur = conn.cursor()
+
+def insert_sounds(cur,word_id, sounds):
+    
     for sound in sounds:
         cur.execute("""
             INSERT OR IGNORE INTO Sound (word_id, ipa, homophone, rhymes, note, audio, ogg_url, mp3_url, enpr)
@@ -338,20 +341,20 @@ def insert_sounds(conn,word_id, sounds):
             sound.get('enpr')
         ))
         sound_id = cur.lastrowid
-        insert_sound_tags(conn, sound_id, sound.get('tags', []))
-    conn.commit()
+        insert_sound_tags(cur, sound_id, sound.get('tags', []))
 
-def insert_sound_tags(conn,sound_id, tags):
-    cur = conn.cursor()
+
+def insert_sound_tags(cur,sound_id, tags):
+    
     for tag in tags:
         cur.execute("""
             INSERT OR IGNORE INTO SoundTag (sound_id, tag)
             VALUES (?, ?)
         """, (sound_id, tag))
-    conn.commit()
 
-def insert_etymology_templates(conn,word_id, templates):
-    cur = conn.cursor()
+
+def insert_etymology_templates(cur,word_id, templates):
+    
     for template in templates:
         cur.execute("""
             INSERT OR IGNORE INTO EtymologyTemplate (word_id, name, expansion)
@@ -362,20 +365,20 @@ def insert_etymology_templates(conn,word_id, templates):
             template.get('expansion')
         ))
         template_id = cur.lastrowid
-        insert_etymology_template_args(conn, template_id, template.get('args', {}))
-    conn.commit()
+        insert_etymology_template_args(cur, template_id, template.get('args', {}))
 
-def insert_etymology_template_args(conn,template_id, args):
-    cur = conn.cursor()
+
+def insert_etymology_template_args(cur,template_id, args):
+    
     for key, value in args.items():
         cur.execute("""
             INSERT OR IGNORE INTO EtymologyTemplateArgs (etymology_template_id, arg_key, arg_value)
             VALUES (?, ?, ?)
         """, (template_id, key, value))
-    conn.commit()
 
-def insert_hyponyms(conn,word_id, hyponyms):
-    cur = conn.cursor()
+
+def insert_hyponyms(cur,word_id, hyponyms):
+    
     for hyponym in hyponyms:
         cur.execute("""
             INSERT OR IGNORE INTO Hyponym (word_id, word, dis1)
@@ -385,19 +388,19 @@ def insert_hyponyms(conn,word_id, hyponyms):
             hyponym.get('word'),
             hyponym.get('_dis1')
         ))
-    conn.commit()
 
-def insert_derived(conn,word_id, derived):
-    cur = conn.cursor()
+
+def insert_derived(cur,word_id, derived):
+    
     for item in derived:
         cur.execute("""
             INSERT OR IGNORE INTO Derived (word_id, word)
             VALUES (?, ?)
         """, (word_id, item.get('word')))
-    conn.commit()
 
-def insert_senses(conn,word_id, senses):
-    cur = conn.cursor()
+
+def insert_senses(cur,word_id, senses):
+    
     for sense in senses:
         cur.execute("""
             INSERT OR IGNORE INTO Sense (word_id, raw_glosses, glosses, id_key)
@@ -409,33 +412,33 @@ def insert_senses(conn,word_id, senses):
             sense.get('id')
         ))
         sense_id = cur.lastrowid
-        insert_sense_links(conn, sense_id, sense.get('links', []))
-        insert_sense_topics(conn, sense_id, sense.get('topics', []))
-        insert_sense_categories(conn, sense_id, sense.get('categories', []))
-        insert_sense_translations(conn, sense_id, sense.get('translations', []))
-        insert_sense_synonyms(conn, sense_id, sense.get('synonyms', []))
-    conn.commit()
+        insert_sense_links(cur, sense_id, sense.get('links', []))
+        insert_sense_topics(cur, sense_id, sense.get('topics', []))
+        insert_sense_categories(cur, sense_id, sense.get('categories', []))
+        insert_sense_translations(cur, sense_id, sense.get('translations', []))
+        insert_sense_synonyms(cur, sense_id, sense.get('synonyms', []))
 
-def insert_sense_links(conn,sense_id, links):
-    cur = conn.cursor()
+
+def insert_sense_links(cur,sense_id, links):
+    
     for link in links:
         cur.execute("""
             INSERT OR IGNORE INTO SenseLink (sense_id, link1, link2)
             VALUES (?, ?, ?)
         """, (sense_id, link[0], link[1]))
-    conn.commit()
 
-def insert_sense_topics(conn,sense_id, topics):
-    cur = conn.cursor()
+
+def insert_sense_topics(cur,sense_id, topics):
+    
     for topic in topics:
         cur.execute("""
             INSERT OR IGNORE INTO SenseTopic (sense_id, topic)
             VALUES (?, ?)
         """, (sense_id, topic))
-    conn.commit()
 
-def insert_sense_categories(conn,sense_id, categories):
-    cur = conn.cursor()
+
+def insert_sense_categories(cur,sense_id, categories):
+    
     for category in categories:
         cur.execute("""
             INSERT OR IGNORE INTO SenseCategory (sense_id, name, kind, source, orig, langcode, dis)
@@ -450,19 +453,19 @@ def insert_sense_categories(conn,sense_id, categories):
             category.get('_dis')
         ))
         category_id = cur.lastrowid
-        insert_sense_category_parents(conn,category_id, category.get('parents', []))
+        insert_sense_category_parents(cur,category_id, category.get('parents', []))
 
-def insert_sense_category_parents(conn,category_id, parents):
-    cur = conn.cursor()
+def insert_sense_category_parents(cur,category_id, parents):
+    
     for parent in parents:
         cur.execute("""
             INSERT OR IGNORE INTO SenseCategoryParent (category_id, parent)
             VALUES (?, ?)
         """, (category_id, parent))
-    conn.commit()
 
-def insert_sense_translations(conn,sense_id, translations):
-    cur = conn.cursor()
+
+def insert_sense_translations(cur,sense_id, translations):
+    
     for translation in translations:
         cur.execute("""
             INSERT OR IGNORE INTO SenseTranslation (sense_id, lang, code, sense, roman, word, dis1)
@@ -476,10 +479,10 @@ def insert_sense_translations(conn,sense_id, translations):
             translation.get('word'),
             translation.get('_dis1')
         ))
-    conn.commit()
 
-def insert_sense_synonyms(conn,sense_id, synonyms):
-    cur = conn.cursor()
+
+def insert_sense_synonyms(cur,sense_id, synonyms):
+    
     for synonym in synonyms:
         cur.execute("""
             INSERT OR IGNORE INTO SenseSynonym (sense_id, sense, word, dis1)
@@ -491,14 +494,14 @@ def insert_sense_synonyms(conn,sense_id, synonyms):
             synonym.get('_dis1')
         ))
         synonym_id = cur.lastrowid
-        insert_sense_synonym_tags(conn, synonym_id, synonym.get('tags', []))
-    conn.commit()
+        insert_sense_synonym_tags(cur, synonym_id, synonym.get('tags', []))
 
-def insert_sense_synonym_tags(conn,synonym_id, tags):
-    cur = conn.cursor()
+
+def insert_sense_synonym_tags(cur,synonym_id, tags):
+    
     for tag in tags:
         cur.execute("""
             INSERT OR IGNORE INTO SenseSynonymTag (synonym_id, tag)
             VALUES (?, ?)
         """, (synonym_id, tag))
-    conn.commit()
+

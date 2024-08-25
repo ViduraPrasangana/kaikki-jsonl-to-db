@@ -1,5 +1,6 @@
 import json
 import os
+import time
 
 from db import create_connection, create_tables, insert_derived, insert_forms, \
     insert_senses, insert_sounds, insert_word, insert_head_template, \
@@ -39,6 +40,7 @@ def main():
         # Read JSONL file and insert data in batches
         with open(file_path, 'r') as file:
             data_batch = []
+            start_time = time.time()
             for i, line in enumerate(file, 1):
                 if i <= last_processed_line:
                     continue
@@ -47,8 +49,10 @@ def main():
                     data_batch.append((data, i))
                     if i % batch_size == 0:
                         insert_word_batch(conn, data_batch)
-                        print(f"Inserted {i} records")
+                        elapsed_time = time.time() - start_time
+                        print(f"Inserted {i} records in {elapsed_time:.2f} seconds")
                         data_batch = []
+                        start_time = time.time()
                         # write_last_processed_line(progress_file, i)
                 except Exception as e:
                     print(f"Failed to process line {i}: {e}")
@@ -57,7 +61,8 @@ def main():
             # Insert remaining data if any
             if data_batch:
                 insert_word_batch(conn, data_batch)
-                print(f"Inserted {i} records")
+                elapsed_time = time.time() - start_time
+                print(f"Inserted {i} records in {elapsed_time:.2f} seconds")
                 # write_last_processed_line(progress_file, i)
 
         conn.close()
@@ -69,15 +74,18 @@ def insert_word_batch(conn, data_batch):
         insert_word_def(conn, data, line_number)
 
 def insert_word_def(conn, json_data, line_number):
-    word_id = insert_word(conn,json_data,line_number)
-    insert_head_template(conn,word_id, json_data.get('head_templates', []))
-    insert_forms(conn,word_id, json_data.get('forms', []))
-    insert_descendants(conn,word_id, json_data.get('descendants', []))
-    insert_sounds(conn,word_id, json_data.get('sounds', []))
-    insert_etymology_templates(conn,word_id, json_data.get('etymology_templates', []))
-    insert_hyponyms(conn,word_id, json_data.get('hyponyms', []))
-    insert_derived(conn,word_id, json_data.get('derived', []))
-    insert_senses(conn,word_id, json_data.get('senses', []))
+    cur = conn.cursor()
+    word_id = insert_word(cur,json_data,line_number)
+    insert_head_template(cur,word_id, json_data.get('head_templates', []))
+    insert_forms(cur,word_id, json_data.get('forms', []))
+    insert_descendants(cur,word_id, json_data.get('descendants', []))
+    insert_sounds(cur,word_id, json_data.get('sounds', []))
+    insert_etymology_templates(cur,word_id, json_data.get('etymology_templates', []))
+    insert_hyponyms(cur,word_id, json_data.get('hyponyms', []))
+    insert_derived(cur,word_id, json_data.get('derived', []))
+    insert_senses(cur,word_id, json_data.get('senses', []))
+    conn.commit()
+    cur.close()
 
 if __name__ == '__main__':
     main()
