@@ -40,14 +40,67 @@ def read_sql(filename):
         return handle.read()
 
 
+class Vocabulary:
+    """In-memory string -> integer id map for a lookup table (Tag, Category).
+
+    Tags and category names repeat enormously in the dump, so the loader assigns
+    each distinct string an id once and writes the integer everywhere else. This
+    is the same trick RELATION_ID uses, with the vocabulary discovered at run
+    time instead of hardcoded.
+
+    ids are assigned client-side, so load() must repopulate the map from the
+    database before a resumed run hands out ids that already exist.
+    """
+
+    def __init__(self, table):
+        self.table = table
+        self._ids = {}
+        self._pending = []      # (id, name) rows not yet written
+        self._next_id = 1
+
+    def load(self, cursor):
+        cursor.execute(f"SELECT id, name FROM {self.table}")
+        for row_id, name in cursor.fetchall():
+            self._ids[name] = row_id
+            if row_id >= self._next_id:
+                self._next_id = row_id + 1
+
+    def id_for(self, name):
+        if name is None:
+            return None
+        found = self._ids.get(name)
+        if found is None:
+            found = self._next_id
+            self._next_id += 1
+            self._ids[name] = found
+            self._pending.append((found, name))
+        return found
+
+    def take_pending(self):
+        pending = self._pending
+        self._pending = []
+        return pending
+
+    def __len__(self):
+        return len(self._ids)
+
+
 class SqliteCursor:
     """Executes immediately; generated ids come from lastrowid."""
 
     copies = 0
 
-    def __init__(self, cursor):
+    def __init__(self, cursor, tags=None, categories=None):
         self._cursor = cursor
+        self._tags = tags
+        self._categories = categories
         self.rows_written = 0
+
+    def tag_id(self, name):
+        return self._tags.id_for(name)
+
+    def category_id(self, name):
+        return self._categories.id_for(name)
 
     def insert(self, sql, params):
         self._cursor.execute(sql, params)
@@ -77,7 +130,14 @@ class SqliteCursor:
         self._cursor.execute("RELEASE SAVEPOINT entry")
 
     def flush(self):
-        pass
+        # New vocabulary entries must reach the database in the same
+        # transaction as the rows referencing them.
+        for vocab in (self._tags, self._categories):
+            rows = vocab.take_pending() if vocab else []
+            if rows:
+                self._cursor.executemany(
+                    f"INSERT INTO {vocab.table} (id, name) VALUES (?, ?)", rows)
+                self.rows_written += len(rows)
 
     def close(self):
         self._cursor.close()
@@ -90,9 +150,17 @@ class PostgresCursor:
 
     copies = 0
 
-    def __init__(self, cursor):
+    def __init__(self, cursor, tags=None, categories=None):
         self._cursor = cursor
+        self._tags = tags
+        self._categories = categories
         self.rows_written = 0
+
+    def tag_id(self, name):
+        return self._tags.id_for(name)
+
+    def category_id(self, name):
+        return self._categories.id_for(name)
 
     @classmethod
     def _translate(cls, sql):
@@ -131,7 +199,12 @@ class PostgresCursor:
         self._cursor.execute("RELEASE SAVEPOINT entry")
 
     def flush(self):
-        pass
+        for vocab in (self._tags, self._categories):
+            rows = vocab.take_pending() if vocab else []
+            if rows:
+                self._cursor.executemany(
+                    f"INSERT INTO {vocab.table} (id, name) VALUES (%s, %s)", rows)
+                self.rows_written += len(rows)
 
     def close(self):
         self._cursor.close()
@@ -150,14 +223,22 @@ class PostgresCopyCursor:
     the identity sequences do not later hand out ids that are already in use.
     """
 
-    def __init__(self, connection):
+    def __init__(self, connection, tags=None, categories=None):
         self._connection = connection
+        self._tags = tags
+        self._categories = categories
         self._next_id = {}       # table -> next id to hand out
         self._buffers = {}       # (table, columns) -> list of row tuples
         self._parsed = {}        # sql -> (table, columns)
         self._mark = None        # buffer lengths at the start of the current entry
         self.rows_written = 0    # rows handed to COPY by flush()
         self.copies = 0          # COPY statements issued by flush()
+
+    def tag_id(self, name):
+        return self._tags.id_for(name)
+
+    def category_id(self, name):
+        return self._categories.id_for(name)
 
     def _parse(self, sql):
         parsed = self._parsed.get(sql)
@@ -221,6 +302,19 @@ class PostgresCopyCursor:
         self._mark = None
 
     def flush(self):
+        # Vocabulary rows first: the junction rows about to be copied reference
+        # them. (Foreign keys are only applied after the load, so this is for
+        # consistency rather than to satisfy a constraint mid-load.)
+        for vocab in (self._tags, self._categories):
+            rows = vocab.take_pending() if vocab else []
+            if rows:
+                with self._connection.cursor() as cursor:
+                    with cursor.copy(f"COPY {vocab.table} (id, name) FROM STDIN") as copy:
+                        for row in rows:
+                            copy.write_row(row)
+                self.rows_written += len(rows)
+                self.copies += 1
+
         for (table, columns), rows in self._buffers.items():
             if not rows:
                 continue
@@ -250,6 +344,14 @@ class SqliteBackend:
 
     def __init__(self, target, **_):
         self.target = target
+        self.tags = Vocabulary('Tag')
+        self.categories = Vocabulary('Category')
+
+    def load_vocabularies(self, conn):
+        cursor = conn.cursor()
+        self.tags.load(cursor)
+        self.categories.load(cursor)
+        cursor.close()
 
     def connect(self):
         import sqlite3
@@ -263,7 +365,7 @@ class SqliteBackend:
         return conn
 
     def cursor(self, conn):
-        return SqliteCursor(conn.cursor())
+        return SqliteCursor(conn.cursor(), self.tags, self.categories)
 
     def run_script(self, conn, sql):
         conn.executescript(sql)
@@ -276,6 +378,13 @@ class PostgresBackend:
     def __init__(self, target, use_copy=True):
         self.target = target
         self.use_copy = use_copy
+        self.tags = Vocabulary('Tag')
+        self.categories = Vocabulary('Category')
+
+    def load_vocabularies(self, conn):
+        with conn.cursor() as cursor:
+            self.tags.load(cursor)
+            self.categories.load(cursor)
 
     def connect(self):
         try:
@@ -293,8 +402,8 @@ class PostgresBackend:
 
     def cursor(self, conn):
         if self.use_copy:
-            return PostgresCopyCursor(conn)
-        return PostgresCursor(conn.cursor())
+            return PostgresCopyCursor(conn, self.tags, self.categories)
+        return PostgresCursor(conn.cursor(), self.tags, self.categories)
 
     def run_script(self, conn, sql):
         with conn.cursor() as cur:

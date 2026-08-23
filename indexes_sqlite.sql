@@ -32,7 +32,6 @@ CREATE INDEX IF NOT EXISTS ix_wordrelationtag      ON WordRelationTag (relation_
 
 CREATE INDEX IF NOT EXISTS ix_sense                ON Sense (word_id);
 CREATE INDEX IF NOT EXISTS ix_sensetag             ON SenseTag (sense_id);
-CREATE INDEX IF NOT EXISTS ix_sensetag_tag         ON SenseTag (tag);
 CREATE INDEX IF NOT EXISTS ix_sensetopic           ON SenseTopic (sense_id);
 CREATE INDEX IF NOT EXISTS ix_sensecategory        ON SenseCategory (sense_id);
 CREATE INDEX IF NOT EXISTS ix_senselink            ON SenseLink (sense_id);
@@ -45,6 +44,14 @@ CREATE INDEX IF NOT EXISTS ix_sensealtof_word      ON SenseAltOf (word);
 CREATE INDEX IF NOT EXISTS ix_sensewikidata        ON SenseWikidata (sense_id);
 CREATE INDEX IF NOT EXISTS ix_senserelation        ON SenseRelation (sense_id, relation_type);
 CREATE INDEX IF NOT EXISTS ix_senserelationtag     ON SenseRelationTag (relation_id);
+
+-- Reverse lookups: every form/sense carrying a given tag, every word in a
+-- category. These are integer index scans now that the text lives in Tag/Category.
+CREATE INDEX IF NOT EXISTS ix_formtag_tag        ON FormTag (tag_id, form_id);
+CREATE INDEX IF NOT EXISTS ix_sensetag_tag       ON SenseTag (tag_id, sense_id);
+CREATE INDEX IF NOT EXISTS ix_soundtag_tag       ON SoundTag (tag_id, sound_id);
+CREATE INDEX IF NOT EXISTS ix_sensecategory_cat  ON SenseCategory (category_id, sense_id);
+CREATE INDEX IF NOT EXISTS ix_wordcategory_cat   ON WordCategory (category_id, word_id);
 
 -- ---------------------------------------------------------------------------
 -- Full-text search (external-content FTS5 tables mirroring Word and Sense)

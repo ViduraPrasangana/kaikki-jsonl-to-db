@@ -66,6 +66,14 @@ One `Word` row per JSONL line, fanning out into ~29 tables. Notable points:
   `relation_type`. Benchmarked ~2x faster than one table per relation for the
   "fetch everything for this word" query a dictionary page runs. Use the
   `v_WordRelation` / `v_SenseRelation` views to get the name back.
+- **`Tag` and `Category`** are shared vocabularies. Tag and category strings
+  repeat enormously (`formtag.tag` was measured at ~103,000x repetition over
+  310M rows), so the loader assigns each distinct string an id once and the
+  junction tables store the integer. `v_FormTag` / `v_SenseTag` /
+  `v_SenseCategory` / `v_WordCategory` expose the text again for convenience.
+- **The junction tables carry no surrogate `id`.** `FormTag` is
+  `(form_id, tag_id, is_raw)`; nothing ever referenced a junction row by id, and
+  on a full load that column plus its primary-key index cost 14.3 GB.
 - **`SenseTag`** carries the register and domain labels (`informal`, `slang`,
   `obsolete`, `UK`, `transitive`). `is_raw = 1` marks a wiktextract `raw_tag`.
 - **`SenseFormOf` / `SenseAltOf`** resolve inflections and spelling variants

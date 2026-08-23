@@ -39,7 +39,6 @@ CREATE INDEX IF NOT EXISTS ix_wordrelationtag      ON WordRelationTag (relation_
 
 CREATE INDEX IF NOT EXISTS ix_sense                ON Sense (word_id);
 CREATE INDEX IF NOT EXISTS ix_sensetag             ON SenseTag (sense_id);
-CREATE INDEX IF NOT EXISTS ix_sensetag_tag         ON SenseTag (tag);
 CREATE INDEX IF NOT EXISTS ix_sensetopic           ON SenseTopic (sense_id);
 CREATE INDEX IF NOT EXISTS ix_sensecategory        ON SenseCategory (sense_id);
 CREATE INDEX IF NOT EXISTS ix_senselink            ON SenseLink (sense_id);
@@ -114,5 +113,16 @@ ALTER TABLE SenseWikidata         ADD CONSTRAINT fk_sensewikidata_sense    FOREI
 ALTER TABLE SenseRelation         ADD CONSTRAINT fk_senserelation_sense    FOREIGN KEY (sense_id)              REFERENCES Sense (id);
 ALTER TABLE SenseRelation         ADD CONSTRAINT fk_senserelation_type     FOREIGN KEY (relation_type)         REFERENCES RelationType (id);
 ALTER TABLE SenseRelationTag      ADD CONSTRAINT fk_senserelationtag_rel   FOREIGN KEY (relation_id)           REFERENCES SenseRelation (id);
+
+-- Junction tables into the shared vocabularies.
+ALTER TABLE FormTag               ADD CONSTRAINT fk_formtag_tag            FOREIGN KEY (tag_id)                REFERENCES Tag (id);
+ALTER TABLE SoundTag              ADD CONSTRAINT fk_soundtag_tag           FOREIGN KEY (tag_id)                REFERENCES Tag (id);
+ALTER TABLE SenseTag              ADD CONSTRAINT fk_sensetag_tag           FOREIGN KEY (tag_id)                REFERENCES Tag (id);
+ALTER TABLE DescendantTag         ADD CONSTRAINT fk_descendanttag_tag      FOREIGN KEY (tag_id)                REFERENCES Tag (id);
+ALTER TABLE TranslationTag        ADD CONSTRAINT fk_translationtag_tag     FOREIGN KEY (tag_id)                REFERENCES Tag (id);
+ALTER TABLE WordRelationTag       ADD CONSTRAINT fk_wordrelationtag_tag    FOREIGN KEY (tag_id)                REFERENCES Tag (id);
+ALTER TABLE SenseRelationTag      ADD CONSTRAINT fk_senserelationtag_tag   FOREIGN KEY (tag_id)                REFERENCES Tag (id);
+ALTER TABLE WordCategory          ADD CONSTRAINT fk_wordcategory_cat       FOREIGN KEY (category_id)           REFERENCES Category (id);
+ALTER TABLE SenseCategory         ADD CONSTRAINT fk_sensecategory_cat      FOREIGN KEY (category_id)           REFERENCES Category (id);
 
 ANALYZE;

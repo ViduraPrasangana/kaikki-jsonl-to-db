@@ -85,6 +85,9 @@ def main():
     backend.run_script(conn, read_sql(SCHEMA_FILES[backend.name]))
     print(f"Schema applied from {SCHEMA_FILES[backend.name]}")
 
+    # A resumed run must know the ids already handed out, or it would reissue them.
+    backend.load_vocabularies(conn)
+
     cur = backend.cursor(conn)
     last_processed_line = read_last_processed_line(cur)
     cur.close()

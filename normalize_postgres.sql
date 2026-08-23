@@ -1,5 +1,9 @@
 -- Normalise repeated text values into lookup tables + id-to-id join tables.
 --
+-- ONLY NEEDED FOR A DATABASE LOADED BEFORE THIS CHANGE. The loader now writes
+-- Tag/Category ids directly (see schema_postgres.sql), so a fresh load already
+-- has this shape and does not need this migration.
+--
 -- Every table below stores a short string that repeats hundreds of thousands of
 -- times (formtag.tag repeats ~1,000,000x). Replacing that text with a 4-byte
 -- integer FK removes the repetition and turns each *Tag / *Category table into a

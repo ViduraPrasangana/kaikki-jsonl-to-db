@@ -42,9 +42,10 @@ def write_progress(cur, line_number):
 
 
 def _insert_tags(cur, table, fk_col, fk_id, tags, raw_tags):
-    rows = [(fk_id, tag, 0) for tag in tags or []]
-    rows += [(fk_id, tag, 1) for tag in raw_tags or []]
-    cur.run_many(f"INSERT INTO {table} ({fk_col}, tag, is_raw) VALUES (?, ?, ?)", rows)
+    """Tags are stored as ids into the shared Tag vocabulary, not as text."""
+    rows = [(fk_id, cur.tag_id(tag), 0) for tag in tags or []]
+    rows += [(fk_id, cur.tag_id(tag), 1) for tag in raw_tags or []]
+    cur.run_many(f"INSERT INTO {table} ({fk_col}, tag_id, is_raw) VALUES (?, ?, ?)", rows)
 
 
 def insert_word(cur, data, line_number):
@@ -61,8 +62,8 @@ def insert_word(cur, data, line_number):
         line_number,
     ))
 
-    cur.run_many("INSERT INTO WordCategory (word_id, name) VALUES (?, ?)",
-                 [(word_id, name) for name in data.get('categories') or []])
+    cur.run_many("INSERT INTO WordCategory (word_id, category_id) VALUES (?, ?)",
+                 [(word_id, cur.category_id(name)) for name in data.get('categories') or []])
     cur.run_many("INSERT INTO WordWikipedia (word_id, title) VALUES (?, ?)",
                  [(word_id, title) for title in data.get('wikipedia') or []])
     return word_id
@@ -218,8 +219,8 @@ def insert_senses(cur, word_id, senses):
                      sense.get('tags'), sense.get('raw_tags'))
         cur.run_many("INSERT INTO SenseTopic (sense_id, topic) VALUES (?, ?)",
                      [(sense_id, topic) for topic in sense.get('topics') or []])
-        cur.run_many("INSERT INTO SenseCategory (sense_id, name) VALUES (?, ?)",
-                     [(sense_id, name) for name in sense.get('categories') or []])
+        cur.run_many("INSERT INTO SenseCategory (sense_id, category_id) VALUES (?, ?)",
+                     [(sense_id, cur.category_id(name)) for name in sense.get('categories') or []])
         cur.run_many("INSERT INTO SenseWikidata (sense_id, code) VALUES (?, ?)",
                      [(sense_id, code) for code in sense.get('wikidata') or []])
 

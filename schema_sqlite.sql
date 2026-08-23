@@ -24,10 +24,23 @@ CREATE TABLE IF NOT EXISTS RelationType (
     name TEXT NOT NULL UNIQUE
 );
 
+-- Shared vocabularies. Tags and category names repeat enormously (formtag.tag
+-- was measured at ~103,000x repetition over 310M rows), so they are stored once
+-- here and referenced by integer id from the junction tables below.
+-- ids are assigned by the loader, so these carry no identity/autoincrement.
+CREATE TABLE IF NOT EXISTS Tag (
+    id            INTEGER PRIMARY KEY,
+    name          TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS Category (
+    id            INTEGER PRIMARY KEY,
+    name          TEXT NOT NULL UNIQUE
+);
+
 CREATE TABLE IF NOT EXISTS WordCategory (
-    id      INTEGER PRIMARY KEY AUTOINCREMENT,
-    word_id INTEGER,
-    name    TEXT
+    word_id       INTEGER,
+    category_id   INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS WordWikipedia (
@@ -68,10 +81,9 @@ CREATE TABLE IF NOT EXISTS Form (
 );
 
 CREATE TABLE IF NOT EXISTS FormTag (
-    id      INTEGER PRIMARY KEY AUTOINCREMENT,
-    form_id INTEGER,
-    tag     TEXT,
-    is_raw  INTEGER DEFAULT 0
+    form_id       INTEGER,
+    tag_id        INTEGER,
+    is_raw        INTEGER DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS Sound (
@@ -93,10 +105,9 @@ CREATE TABLE IF NOT EXISTS Sound (
 );
 
 CREATE TABLE IF NOT EXISTS SoundTag (
-    id       INTEGER PRIMARY KEY AUTOINCREMENT,
-    sound_id INTEGER,
-    tag      TEXT,
-    is_raw   INTEGER DEFAULT 0
+    sound_id      INTEGER,
+    tag_id        INTEGER,
+    is_raw        INTEGER DEFAULT 0
 );
 
 -- Descendants nest through a `descendants` key; parent_id models that tree and
@@ -114,9 +125,8 @@ CREATE TABLE IF NOT EXISTS Descendant (
 );
 
 CREATE TABLE IF NOT EXISTS DescendantTag (
-    id            INTEGER PRIMARY KEY AUTOINCREMENT,
     descendant_id INTEGER,
-    tag           TEXT,
+    tag_id        INTEGER,
     is_raw        INTEGER DEFAULT 0
 );
 
@@ -138,10 +148,9 @@ CREATE TABLE IF NOT EXISTS Translation (
 );
 
 CREATE TABLE IF NOT EXISTS TranslationTag (
-    id             INTEGER PRIMARY KEY AUTOINCREMENT,
     translation_id INTEGER,
-    tag            TEXT,
-    is_raw         INTEGER DEFAULT 0
+    tag_id        INTEGER,
+    is_raw        INTEGER DEFAULT 0
 );
 
 -- All word-level relations (derived, synonyms, antonyms, hyponyms, ...) in one
@@ -161,10 +170,9 @@ CREATE TABLE IF NOT EXISTS WordRelation (
 );
 
 CREATE TABLE IF NOT EXISTS WordRelationTag (
-    id          INTEGER PRIMARY KEY AUTOINCREMENT,
-    relation_id INTEGER,
-    tag         TEXT,
-    is_raw      INTEGER DEFAULT 0
+    relation_id   INTEGER,
+    tag_id        INTEGER,
+    is_raw        INTEGER DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS Sense (
@@ -179,10 +187,9 @@ CREATE TABLE IF NOT EXISTS Sense (
 
 -- is_raw = 0 for normalised tags, 1 for wiktextract raw_tags.
 CREATE TABLE IF NOT EXISTS SenseTag (
-    id       INTEGER PRIMARY KEY AUTOINCREMENT,
-    sense_id INTEGER,
-    tag      TEXT,
-    is_raw   INTEGER DEFAULT 0
+    sense_id      INTEGER,
+    tag_id        INTEGER,
+    is_raw        INTEGER DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS SenseTopic (
@@ -192,9 +199,8 @@ CREATE TABLE IF NOT EXISTS SenseTopic (
 );
 
 CREATE TABLE IF NOT EXISTS SenseCategory (
-    id       INTEGER PRIMARY KEY AUTOINCREMENT,
-    sense_id INTEGER,
-    name     TEXT
+    sense_id      INTEGER,
+    category_id   INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS SenseLink (
@@ -252,10 +258,9 @@ CREATE TABLE IF NOT EXISTS SenseRelation (
 );
 
 CREATE TABLE IF NOT EXISTS SenseRelationTag (
-    id          INTEGER PRIMARY KEY AUTOINCREMENT,
-    relation_id INTEGER,
-    tag         TEXT,
-    is_raw      INTEGER DEFAULT 0
+    relation_id   INTEGER,
+    tag_id        INTEGER,
+    is_raw        INTEGER DEFAULT 0
 );
 
 INSERT OR IGNORE INTO RelationType (id, name) VALUES
@@ -282,3 +287,19 @@ CREATE VIEW IF NOT EXISTS v_SenseRelation AS
 SELECT sr.id, sr.sense_id, rt.name AS relation, sr.word, sr.sense,
        sr.source, sr.english, sr.roman, sr.alt, sr.taxonomic
 FROM SenseRelation sr JOIN RelationType rt ON rt.id = sr.relation_type;
+
+CREATE VIEW IF NOT EXISTS v_FormTag AS
+SELECT ft.form_id, t.name AS tag, ft.is_raw
+FROM FormTag ft JOIN Tag t ON t.id = ft.tag_id;
+
+CREATE VIEW IF NOT EXISTS v_SenseTag AS
+SELECT st.sense_id, t.name AS tag, st.is_raw
+FROM SenseTag st JOIN Tag t ON t.id = st.tag_id;
+
+CREATE VIEW IF NOT EXISTS v_SenseCategory AS
+SELECT sc.sense_id, c.name
+FROM SenseCategory sc JOIN Category c ON c.id = sc.category_id;
+
+CREATE VIEW IF NOT EXISTS v_WordCategory AS
+SELECT wc.word_id, c.name
+FROM WordCategory wc JOIN Category c ON c.id = wc.category_id;
