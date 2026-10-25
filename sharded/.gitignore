@@ -1,0 +1,4 @@
+__pycache__/
+failed_lines.txt
+zstd_dict.bin
+*.dump
