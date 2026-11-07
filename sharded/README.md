@@ -36,13 +36,16 @@ one JSONL line ──► zstd (trained dictionary, ~6x) ──► row in shard  
 
 | File | Role |
 |---|---|
-| `schema.sql` | Per-shard tables: `entry`, `zstd_dict`, `meta` |
+| `schema.sql` | Per-shard tables: `entry`, `zstd_dict`, `meta`, `language` |
 | `indexes.sql` | `word_key` index (exact and prefix lookup), applied after the load |
 | `shardkey.py` | `fold()`, `fnv1a_32()`, `shard_for()`: the routing rule |
 | `build_shards.py` | JSONL → N shards: trains the dictionary, compresses in parallel, resumable |
 | `verify_shards.py` | Post-build check: layout, decoding, routing, sizes, row total |
 | `shardclient.py` | Python reader (`Shards.lookup`, `Shards.prefix`) |
 | `lookup.py` | CLI around `shardclient.py` |
+| `etymology_walk.py` | Full etymology tree from the shards. It fetches the tree one level per round (≈1–3 parallel queries per level). It uses the parser in `../etymology_tree.py`. |
+| `add_languages.py` | Builds the `language` table (code → name) on shards that lack it. A fresh build fills it automatically. |
+| `shard_urls.txt` | Your shard URLs, one per line in shard order (git-ignored; template: `shard_urls.example.txt`) |
 | `requirements.txt` | `psycopg[binary]`, `zstandard` |
 
 ## 1. Build locally
@@ -54,16 +57,19 @@ createdb -U postgres wiktionary_s0
 createdb -U postgres wiktionary_s1
 createdb -U postgres wiktionary_s2
 
+copy shard_urls.example.txt shard_urls.txt     # then edit: one URL per line, shard order
+
 python build_shards.py --recreate \
     --input "../../../Databases/raw-wiktextract-data.jsonl/raw-wiktextract-data.jsonl/raw-wiktextract-data.jsonl" \
-    --shard-url postgresql://postgres:postgres@localhost:5432/wiktionary_s0 \
-    --shard-url postgresql://postgres:postgres@localhost:5432/wiktionary_s1 \
-    --shard-url postgresql://postgres:postgres@localhost:5432/wiktionary_s2 \
     --dict-out zstd_dict.bin
 ```
 
-- The **order of `--shard-url` is the shard index**. The shard count is how many
-  URLs you pass. You can set `SHARD_URLS` (comma-separated) instead.
+- **Shard URLs** come from `shard_urls.txt`: one per line, and **line order is
+  the shard index** (first line = shard 0). The number of lines is the shard
+  count. The file is git-ignored because it holds passwords. Every script reads
+  it. You can override it for one run with `SHARD_URLS` (comma-separated) or by
+  repeating `--shard-url`, which takes priority over both. `build_shards.py`
+  prints the databases it is about to use, with passwords hidden.
 - On 12 cores the test build did about 5,500 rows/s. Expect **30–40 minutes**
   for the full 24.5 GB dump. Progress is printed every 30 s.
 - **If it's interrupted**, run the same command with `--resume` in place of
@@ -76,7 +82,6 @@ python build_shards.py --recreate \
 Then check it:
 
 ```bash
-set SHARD_URLS=postgresql://postgres:postgres@localhost:5432/wiktionary_s0,postgresql://...s1,postgresql://...s2
 python verify_shards.py --source "<same JSONL>"
 python lookup.py run --lang en
 python lookup.py --prefix encyc
@@ -84,6 +89,18 @@ python lookup.py --prefix encyc
 
 `verify_shards.py` fails if any shard is at or over `--limit-gb` (default 5). It
 also flags a shard that has passed 90% of the limit.
+
+Etymology trees:
+
+```bash
+python etymology_walk.py gratis en --stats
+python etymology_walk.py father en --cognates
+```
+
+Shards built before the `language` table existed show bare language codes
+("la" instead of "Latin") for ancestors that weren't fetched. Run
+`python add_languages.py` once to add the table. It takes a few minutes and
+touches nothing else.
 
 ## 2. Upload to Railway
 

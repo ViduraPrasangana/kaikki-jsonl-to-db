@@ -1,6 +1,6 @@
 """Look a word up across the shards and print its entries as JSON.
 
-    set SHARD_URLS=postgresql://...s0,postgresql://...s1,postgresql://...s2
+    # shard URLs come from shard_urls.txt (or SHARD_URLS, or --shard-url)
     python lookup.py run --lang en
     python lookup.py --prefix ru --limit 10
 """
@@ -9,7 +9,7 @@ import argparse
 import json
 import sys
 
-from shardclient import Shards, urls_from_env
+from shardclient import Shards, default_urls
 
 
 def main():
@@ -23,7 +23,7 @@ def main():
     args = ap.parse_args()
     sys.stdout.reconfigure(encoding='utf-8')   # IPA and non-Latin scripts on a Windows console
 
-    with Shards(args.shard_url or urls_from_env()) as shards:
+    with Shards(args.shard_url or default_urls()) as shards:
         if args.prefix:
             for word in shards.prefix(args.prefix, args.limit, args.lang):
                 print(word)

@@ -13,6 +13,7 @@
 DROP TABLE IF EXISTS meta;
 DROP TABLE IF EXISTS entry;
 DROP TABLE IF EXISTS zstd_dict;
+DROP TABLE IF EXISTS language;
 
 CREATE TABLE entry (
     id         integer  PRIMARY KEY,  -- 1-based line number in the source JSONL, unique across shards
@@ -30,6 +31,15 @@ ALTER TABLE entry ALTER COLUMN data SET STORAGE EXTERNAL;
 CREATE TABLE zstd_dict (
     id    integer PRIMARY KEY,         -- zstd dictionary id, also written into every frame
     dict  bytea   NOT NULL
+);
+
+-- lang_code -> language name, for display ("la" -> "Latin"). Identical on every
+-- shard and covers all shards' entries. Filled at the end of the build (or by
+-- add_languages.py).
+CREATE TABLE language (
+    lang_code  text    PRIMARY KEY,
+    name       text    NOT NULL,   -- most common `lang` value for this code
+    entries    integer NOT NULL    -- entries with this code, across all shards
 );
 
 -- Exactly one row. The API checks it on startup so a swapped connection string

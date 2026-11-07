@@ -2,3 +2,5 @@ __pycache__/
 failed_lines.txt
 zstd_dict.bin
 *.dump
+shard_urls.txt
+out/

@@ -19,14 +19,38 @@ import zstandard as zstd
 import shardkey
 
 
-def urls_from_env():
-    return [u.strip() for u in os.environ.get('SHARD_URLS', '').split(',') if u.strip()]
+SHARD_URLS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'shard_urls.txt')
+
+
+def default_urls():
+    """Shard URLs when none are given on the command line, in shard order:
+    the SHARD_URLS environment variable (comma separated) if set, otherwise
+    shard_urls.txt next to these scripts (one URL per line, # comments)."""
+    env = os.environ.get('SHARD_URLS', '')
+    if env.strip():
+        return [u.strip() for u in env.split(',') if u.strip()]
+    try:
+        with open(SHARD_URLS_FILE, encoding='utf-8') as f:
+            lines = (line.split('#', 1)[0].strip() for line in f)
+            return [line for line in lines if line]
+    except FileNotFoundError:
+        return []
+
+
+def masked(url):
+    """postgresql://user:secret@host/db -> postgresql://user:***@host/db, for logs."""
+    scheme, sep, rest = url.partition('://')
+    creds, at, host = rest.rpartition('@')
+    if not at or ':' not in creds:
+        return url
+    return f'{scheme}{sep}{creds.split(":", 1)[0]}:***@{host}'
 
 
 class Shards:
     def __init__(self, urls):
         if not urls:
-            raise ValueError('no shard URLs (pass them, or set SHARD_URLS)')
+            raise ValueError('no shard URLs: pass --shard-url, set SHARD_URLS, '
+                             f'or list them in {SHARD_URLS_FILE}')
         self.conns = [psycopg.connect(u, autocommit=True) for u in urls]
         self.metas = [c.execute("""SELECT shard_index, shard_count, build_id, dict_id, complete
                                    FROM meta""").fetchone() for c in self.conns]

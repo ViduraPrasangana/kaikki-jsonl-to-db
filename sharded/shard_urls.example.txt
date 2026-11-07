@@ -1,0 +1,13 @@
+# Copy to shard_urls.txt and fill in. One PostgreSQL URL per line, IN SHARD ORDER:
+# the first line is shard 0. The number of lines is the shard count.
+# Lines starting with # and blank lines are ignored.
+#
+# Every script uses this file when no --shard-url is given and SHARD_URLS is
+# not set. shard_urls.txt is git-ignored because the URLs contain passwords.
+
+postgresql://postgres:postgres@localhost:5432/wiktionary_s0
+postgresql://postgres:postgres@localhost:5432/wiktionary_s1
+postgresql://postgres:postgres@localhost:5432/wiktionary_s2
+
+# Railway (public URLs from each Postgres service's Connect tab), e.g.:
+# postgresql://postgres:<password>@<host>.proxy.rlwy.net:<port>/railway

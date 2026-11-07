@@ -17,7 +17,7 @@ import json
 import sys
 
 import shardkey
-from shardclient import Shards, urls_from_env
+from shardclient import Shards, default_urls
 
 
 def main():
@@ -31,7 +31,7 @@ def main():
     args = ap.parse_args()
 
     problems = []
-    with Shards(args.shard_url or urls_from_env()) as shards:
+    with Shards(args.shard_url or default_urls()) as shards:
         n = len(shards.conns)
         print(f'build {shards.metas[0][2]}, {n} shard(s), dictionary {shards.metas[0][3]}')
         total = 0

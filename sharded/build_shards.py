@@ -16,8 +16,8 @@ trained on a sample of the dump. The dictionary is stored in every shard.
     python build_shards.py --resume --input ... --shard-url ... (same URLs, same order)
 
 The order of --shard-url is the shard index: the first URL is shard 0. The
-shard count is the number of URLs. SHARD_URLS (comma separated) works instead
-of repeating --shard-url.
+shard count is the number of URLs. Without --shard-url, the URLs come from
+SHARD_URLS (comma separated) or, failing that, shard_urls.txt.
 """
 
 import argparse
@@ -35,6 +35,8 @@ import psycopg
 import zstandard as zstd
 
 import shardkey
+from add_languages import pick_names, rebuild as rebuild_languages, write_languages
+from shardclient import default_urls, masked
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 HASH_SCHEME = 'fnv1a32(fold(word))'
@@ -70,10 +72,9 @@ def parse_args():
                     help='lines that are not valid JSON are logged here, not loaded')
     args = ap.parse_args()
 
-    if not args.shard_url and os.environ.get('SHARD_URLS'):
-        args.shard_url = [u.strip() for u in os.environ['SHARD_URLS'].split(',') if u.strip()]
+    args.shard_url = args.shard_url or default_urls()
     if not args.shard_url:
-        ap.error('give at least one --shard-url (or set SHARD_URLS)')
+        ap.error('no shard URLs: pass --shard-url, set SHARD_URLS, or fill in shard_urls.txt')
     return args
 
 
@@ -129,9 +130,11 @@ def clean(text):
 
 
 def process_chunk(chunk):
-    """[(line_no, raw bytes)] -> ([(shard, row)], [(line_no, error)], raw_bytes, stored_bytes)"""
+    """[(line_no, raw bytes)] -> ([(shard, row)], [(line_no, error)], raw_bytes, stored_bytes,
+    Counter[(lang_code, lang name)])"""
     c, d, n = _worker['c'], _worker['d'], _worker['n']
     rows, failed, raw_bytes, stored_bytes = [], [], 0, 0
+    languages = collections.Counter()
     for line_no, raw in chunk:
         try:
             obj = json.loads(raw)
@@ -148,11 +151,14 @@ def process_chunk(chunk):
         if d.decompress(data) != raw:          # cheap, and proves the row is lossless
             raise RuntimeError(f'line {line_no}: zstd round trip mismatch')
         shard = shardkey.fnv1a_32(key.encode('utf-8')) % n
-        rows.append((shard, (line_no, word, key, clean(obj.get('lang_code') or ''),
+        lang_code = clean(obj.get('lang_code') or '')
+        rows.append((shard, (line_no, word, key, lang_code,
                              clean(pos) if isinstance(pos, str) else None, data)))
+        if isinstance(obj.get('lang'), str) and obj['lang']:
+            languages[(lang_code, obj['lang'])] += 1
         raw_bytes += len(raw)
         stored_bytes += len(data)
-    return rows, failed, raw_bytes, stored_bytes
+    return rows, failed, raw_bytes, stored_bytes, languages
 
 
 # ---------------------------------------------------------------------------
@@ -263,6 +269,7 @@ def load(conns, args, dict_bytes, start_line):
     started = last_report = time.time()
     pending_line = start_line
     next_flush = start_line + args.batch_lines
+    languages = collections.Counter()
 
     with Pool(args.workers, init_worker, (dict_bytes, args.level, n)) as pool, \
             open(args.failed_lines, 'a', encoding='utf-8') as failed_log:
@@ -273,7 +280,8 @@ def load(conns, args, dict_bytes, start_line):
         def drain_one():
             nonlocal total_raw, total_stored, loaded, failed_count, pending_line, next_flush
             result, chunk_last, offset = in_flight.popleft()
-            rows, failed, raw_bytes, stored_bytes = result.get()
+            rows, failed, raw_bytes, stored_bytes, chunk_languages = result.get()
+            languages.update(chunk_languages)
             for shard, row in rows:
                 buffers[shard].append(row)
             for line_no, error in failed:
@@ -306,6 +314,12 @@ def load(conns, args, dict_bytes, start_line):
             drain_one()
         flush(conns, buffers, pending_line)
 
+    # A resumed run only saw part of the file, so count languages from the
+    # stored rows instead.
+    if start_line:
+        rebuild_languages(args.shard_url)
+    else:
+        write_languages(conns, pick_names(languages))
     for conn in conns:
         conn.execute('UPDATE meta SET complete = true, last_line = %s', (pending_line,))
     elapsed = time.time() - started
@@ -340,7 +354,10 @@ def report_sizes(conns):
 
 def main():
     args = parse_args()
-    conns = [psycopg.connect(url, autocommit=True) for url in args.shard_url]
+    # --recreate drops tables, so always show which databases are about to be used.
+    for index, url in enumerate(args.shard_url):
+        print(f'shard {index}: {masked(url)}', flush=True)
+    conns =[psycopg.connect(url, autocommit=True) for url in args.shard_url]
     try:
         dict_bytes, start_line = recreate(conns, args) if args.recreate else resume(conns)
         if args.dict_out:
